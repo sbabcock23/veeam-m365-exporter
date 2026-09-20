@@ -1,0 +1,17 @@
+listen_address: ":9810"
+scrape_timeout: 25s
+
+instances:
+  - name: vb365-primary
+    url: https://vb365-primary.example.com:4443
+    username: DOMAIN\\svc_prometheus
+    password_env: VB365_PRIMARY_PASSWORD
+    insecure_skip_verify: true
+    api_version: v8
+
+  - name: vb365-secondary
+    url: https://vb365-secondary.example.com:4443
+    username_env: VB365_SECONDARY_USERNAME
+    password_env: VB365_SECONDARY_PASSWORD
+    insecure_skip_verify: false
+    api_version: v8

@@ -1,0 +1,13 @@
+services:
+  veeam-vb365-exporter:
+    build: .
+    container_name: veeam-vb365-exporter
+    restart: unless-stopped
+    ports:
+      - "9810:9810"
+    environment:
+      VB365_PRIMARY_PASSWORD: "change-me"
+      VB365_SECONDARY_USERNAME: "DOMAIN\\svc_prometheus2"
+      VB365_SECONDARY_PASSWORD: "change-me-too"
+    volumes:
+      - ./config.yml:/etc/veeam-vb365-exporter/config.yml:ro
